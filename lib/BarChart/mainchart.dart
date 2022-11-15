@@ -45,8 +45,6 @@ class _PageState extends State<Chart> {
   //VIA_USERID_DATA_FETCH_FUNC
 
   Future<List<dynamic>> _getfilterdropdownType() async {
-
-    print("nancy");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _id = (prefs.getString('username') ?? "");
 
