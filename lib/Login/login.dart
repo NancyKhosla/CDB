@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../BarChart/demo.dart';
+import '../DynamicFlow/MainMenuPage.dart';
 import '../Utils/basicAuth.dart';
 import '../Home/homescreen.dart';
 
@@ -34,9 +35,10 @@ class _MyPageState extends State<LoginPage>{
                  SharedPreferences prefs = await SharedPreferences.getInstance();
                  prefs.setString("username", userid[0][0]);
                  prefs.setString("uname", userid[0][1]) ;  
+                 // change to home for previous code
                  Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => MainMenuPage()),
                 );
                } else { 
                  return showDialog(

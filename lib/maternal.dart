@@ -137,10 +137,10 @@ class _MyPageState extends State<MaternalMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: Text('${widget.mname}'),
-        ),
+        // appBar: AppBar(
+        //   backgroundColor: Colors.green,
+        //   title: Text('${widget.mname}'),
+        // ),
         body: Column(
           children: [
           AnimatedContainer(

@@ -71,7 +71,6 @@ class _GridWidgetState extends State<GridWidget> {
       loadData();
     });
     _dashboardmenufun();
-    _getDashboardConfifuration();
     tit = 'EDL Details';
   }
 
@@ -81,57 +80,6 @@ class _GridWidgetState extends State<GridWidget> {
       rolename = (prefs.getString('uname') ?? "");
     });
   }
-
-  Future<dynamic> _getDashboardConfifuration() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
-      final formData = jsonEncode({"primaryKeys" : ['$dashboard_id']});
-      Response response = await ioClient.post(DASHBOARD_CONFIG, headers: headers, body: formData);
-      print(formData);
-      print(DASHBOARD_CONFIG);
-      print(response.statusCode);
-      if(response.statusCode == 200){
-        Map<String, dynamic> list = json.decode(response.body);
-        print(list);
-        dashboardConfigData = list["dataValue"];
-        if( list["dataValue"] != null){
-
-          print("dashboardConfigData length..." + dashboardConfigData.length.toString());
-          print(dashboardConfigData[0]);
-
-        } else {
-          return showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  backgroundColor: Color(0xffffffff),
-                  title: Text("Dashboard configrations not valid!", textAlign: TextAlign.center, style: TextStyle(fontSize:13, color: Color(0xff000000))),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("Close"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );});
-        }
-      } else {
-        throw Exception('Failed to load data');
-      }
-    } else {
-      return showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              backgroundColor: Color(0xffffffff),
-              title: Text("Please Check your Internet Connection", textAlign: TextAlign.center,  style: TextStyle(fontSize:16, color: Color(0xff000000))),
-            );});
-    }
-  }
-
-
-
 
 
   bool isLoading = true;

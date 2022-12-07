@@ -22,8 +22,10 @@ class _MyPageState extends State<IsLoggedIn> {
       Navigator.pushNamedAndRemoveUntil(
           context, '/login', ModalRoute.withName('/login'));
     } else {
+      // change to /home when previous code needed
+      // change to mainMenuPage when dynamic code needed
       Navigator.pushNamedAndRemoveUntil(
-          context, '/home', ModalRoute.withName('/home'));
+          context, '/MainMenuPage', ModalRoute.withName('/MainMenuPage'));
     }
   }
 
