@@ -15,4 +15,7 @@ final routes = {
 '/MainMenuPage': (BuildContext context) => new MainMenuPage(),
 
 
+  // change to /home when previous code needed
+  // change to mainMenuPage when dynamic code needed
+
 };
